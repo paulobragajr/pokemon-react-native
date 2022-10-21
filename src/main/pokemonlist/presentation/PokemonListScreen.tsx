@@ -3,13 +3,16 @@ import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StatusBar, FlatList, useColorScheme} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {Pokemon} from '../../model/Pokemon';
-import {PokemonList} from '../../model/PokemonList';
-import {GetPokemonList} from '../../servce/PokemonListService';
+import {Pokemon} from '../../../model/Pokemon';
+import {PokemonList} from '../model/PokemonList';
 import PokemonCell from './pokemoncell/PokemonCell';
 import {TitleText} from './PokemonListStyle';
 
-const PokemonListScreen = () => {
+type Props = {
+  pokemonList: PokemonList;
+};
+
+const PokemonListScreen: React.FC<Props> = ({pokemonList}: Props) => {
   const [listPokemon, setListPokemon] = useState<Array<Pokemon>>([]);
 
   const isDarkMode = useColorScheme() === 'dark';
@@ -26,15 +29,11 @@ const PokemonListScreen = () => {
   /**
    * Request Service
    */
-  const getPokemonList = () => {
-    GetPokemonList()
-      .then(response => response.data)
-      .then((response: PokemonList) => {
-        setListPokemon(response.pokemon);
-      })
-      .catch(error => {
-        console.warn(error);
-      });
+  const getPokemonList = async () => {
+    try {
+      const pokemonAll = await pokemonList.getPokemonAll();
+      setListPokemon(pokemonAll.pokemon);
+    } catch (err) {}
   };
 
   const _renderItem = ({item}): JSX.Element => {

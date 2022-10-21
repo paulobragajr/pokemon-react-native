@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import {StyleSheet} from 'react-native';
-import PokedexImage from '../../../assets/image/pokeball.png';
+import PokedexImage from '../../../../assets/image/pokeball.png';
 
 const BodyCell = styled.View.attrs((props: {weaknesses: string}) => ({
   backgroundColor: getColor(props.weaknesses),

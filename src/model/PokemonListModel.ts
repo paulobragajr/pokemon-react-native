@@ -1,5 +1,5 @@
 import {Pokemon} from './Pokemon';
 
-export interface PokemonList {
+export interface PokemonListModel {
   pokemon?: [Pokemon];
 }
