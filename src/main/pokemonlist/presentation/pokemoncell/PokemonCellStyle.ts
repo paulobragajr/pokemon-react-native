@@ -1,19 +1,23 @@
 import styled from 'styled-components/native';
-import {StyleSheet} from 'react-native';
+import {PokemonColors} from '../../../../assets/colors/PokemonColors';
 import PokedexImage from '../../../../assets/image/pokeball.png';
 
 const BodyCell = styled.View.attrs((props: {weaknesses: string}) => ({
-  backgroundColor: getColor(props.weaknesses),
+  backgroundColor: PokemonColors.getTypePokemonColor(props.weaknesses),
 }))`
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #fff;
+`;
+
+const ButtonContainer = styled.TouchableHighlight`
   flex: 1;
   margin-right: 10px;
   margin-start: 10px;
   margin-top: 10px;
-  padding: 10px;
   height: 100px;
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: #fff;
 `;
 
 const PokemonName = styled.Text`
@@ -61,40 +65,12 @@ const PokemonTypeBodyCell = styled.View`
   border-color: #2a2b2b2b;
 `;
 
-const styles = StyleSheet.create({
-  list: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 20,
-  },
-});
-
-const getColor = (weaknesses: string | string[]) => {
-  var backGroundcolor = '#eaaf63';
-  if (weaknesses) {
-    if (weaknesses.includes('Water')) {
-      backGroundcolor = '#63cbea';
-    } else if (weaknesses.includes('Grass')) {
-      backGroundcolor = '#63eaab';
-    } else if (weaknesses.includes('Electric')) {
-      backGroundcolor = '#ead363';
-    } else if (weaknesses.includes('Fire')) {
-      backGroundcolor = '#ea6363';
-    } else if (weaknesses.includes('Psychic')) {
-      backGroundcolor = '#9a63ea';
-    }
-  } else {
-    backGroundcolor = '#eaaf63';
-  }
-  return backGroundcolor;
-};
-
 export {
+  ButtonContainer,
   PokemonName,
   PokeDexImageCell,
   PokemonImageCell,
   BodyCell,
   PokemonTypeBodyCell,
   PokemonTypeText,
-  styles,
 };

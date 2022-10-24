@@ -1,30 +1,34 @@
 import React, {useState, useEffect} from 'react';
 
-import {SafeAreaView, StatusBar, FlatList, useColorScheme} from 'react-native';
+import {SafeAreaView, StatusBar, FlatList} from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {PokemonColors} from '../../../assets/colors/PokemonColors';
 import {Pokemon} from '../../../model/Pokemon';
 import {PokemonList} from '../model/PokemonList';
 import PokemonCell from './pokemoncell/PokemonCell';
-import {TitleText} from './PokemonListStyle';
+import {TitleText, styles} from './PokemonListStyle';
 
 type Props = {
   pokemonList: PokemonList;
+  navigation: any;
 };
 
-const PokemonListScreen: React.FC<Props> = ({pokemonList}: Props) => {
+const PokemonListScreen: React.FC<Props> = ({
+  navigation,
+  pokemonList,
+}: Props) => {
   const [listPokemon, setListPokemon] = useState<Array<Pokemon>>([]);
-
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex: 1,
-  };
 
   useEffect(() => {
     getPokemonList();
   }, []);
+
+  const showDetails = (pokemon: Pokemon) => {
+    navigation.navigate('PokemonDetailScreen', {
+      pokemon: pokemon,
+      pokemonList: listPokemon,
+    });
+  };
 
   /**
    * Request Service
@@ -37,15 +41,15 @@ const PokemonListScreen: React.FC<Props> = ({pokemonList}: Props) => {
   };
 
   const _renderItem = ({item}): JSX.Element => {
-    return <PokemonCell pokemon={item} />;
+    return <PokemonCell pokemon={item} onPress={showDetails} />;
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+    <SafeAreaView style={styles.backgroundStyle}>
+      <StatusBar barStyle={PokemonColors.themes.statusBar} />
       <TitleText>PokeDex</TitleText>
       <FlatList
-        style={{flex: 1}}
+        style={styles.list}
         data={listPokemon}
         numColumns={2}
         renderItem={_renderItem}
