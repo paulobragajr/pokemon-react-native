@@ -140,6 +140,11 @@ const ImagePokemonNextEvolution = styled.Image.attrs({})`
   resize-mode: contain;
 `;
 
+const ContainerPokemonWeaknesses = styled.View`
+  flex-direction: row;
+  width: 40%;
+`;
+
 const styles = StyleSheet.create({
   backgroundStyle: {
     backgroundColor: PokemonColors.themes.backgroundColor,
@@ -167,4 +172,5 @@ export {
   ContainerPokemonNextEvolution,
   ContainerImagePokemonNextEvolution,
   ImagePokemonNextEvolution,
+  ContainerPokemonWeaknesses,
 };

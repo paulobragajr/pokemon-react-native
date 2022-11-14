@@ -1,4 +1,5 @@
-import PokemonDetailScreen from '../main/pokemondetail/presentation/PokemonDetailScreen';
+import React from 'react';
+import PokemonDetailView from '../main/pokemondetail/presentation/PokemonDetailView';
 import PokemonListScreen from '../main/pokemonlist/presentation/PokemonListScreen';
 import {makeRemotePokemon} from '../main/pokemonlist/service/RemotePokemonList';
 
@@ -13,7 +14,8 @@ const MakePokemonListScreen: React.FC = ({navigation}): JSX.Element => {
 
 const MakePokemonDetailScreen: React.FC = (props: any): JSX.Element => {
   return (
-    <PokemonDetailScreen navigation={props.navigation} propsElement={props} />
+    <PokemonDetailView navigation={props.navigation} propsElement={props} />
   );
 };
+
 export {MakePokemonListScreen, MakePokemonDetailScreen};

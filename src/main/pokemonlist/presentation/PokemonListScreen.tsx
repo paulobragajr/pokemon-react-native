@@ -34,10 +34,14 @@ const PokemonListScreen: React.FC<Props> = ({
    * Request Service
    */
   const getPokemonList = async () => {
-    try {
-      const pokemonAll = await pokemonList.getPokemonAll();
-      setListPokemon(pokemonAll.pokemon);
-    } catch (err) {}
+    pokemonList
+      .getPokemonAll()
+      .then((response: any) => {
+        setListPokemon(response.pokemon);
+      })
+      .catch(error => {
+        console.warn(error);
+      });
   };
 
   const _renderItem = ({item}): JSX.Element => {

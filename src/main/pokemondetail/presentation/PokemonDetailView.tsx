@@ -23,7 +23,9 @@ import {
   ContainerPokemonNextEvolution,
   ContainerImagePokemonNextEvolution,
   ImagePokemonNextEvolution,
+  ContainerPokemonWeaknesses,
 } from './PokemonDetailStyle';
+
 type Props = {
   propsElement: any;
   navigation: any;
@@ -77,7 +79,7 @@ const PokemonDetailScreen: React.FC<Props> = ({
   const renderPokemonWeaknesses = () => {
     if (pokemon.weaknesses) {
       return (
-        <View style={{flexDirection: 'row', width: '40%'}}>
+        <ContainerPokemonWeaknesses>
           {pokemon.weaknesses.map((pokemonWeaknesses: string, index: any) => {
             return (
               <PokemonType
@@ -88,7 +90,7 @@ const PokemonDetailScreen: React.FC<Props> = ({
               />
             );
           })}
-        </View>
+        </ContainerPokemonWeaknesses>
       );
     } else {
       return <></>;
