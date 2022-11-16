@@ -87,9 +87,9 @@ const CardViewInfo = styled.View.attrs({
   margin: 16px;
   flex-direction: row;
   padding: 16px;
-  background-color: #ffffff;
+  background-color: ${PokemonColors.themes.cardInfoDetailBackgroundColor};
   border-radius: 5px;
-  border-color: #000000;
+  border-color: ${PokemonColors.themes.borderColorDetail};
 `;
 
 const RowView = styled.View`
@@ -126,7 +126,7 @@ const ContainerPokemonNextEvolution = styled.View`
   width: 100%;
   flex: 1;
 `;
-const ContainerImagePokemonNextEvolution = styled.View`
+const ContainerImagePokemonNextEvolution = styled.TouchableHighlight`
   flex-direction: column;
   width: 100%;
   flex: 1;

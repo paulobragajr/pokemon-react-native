@@ -6,8 +6,6 @@ import {
   PokeDexImageCell,
   PokemonImageCell,
   PokemonName,
-  PokemonTypeText,
-  PokemonTypeBodyCell,
   ButtonContainer,
 } from './PokemonCellStyle';
 

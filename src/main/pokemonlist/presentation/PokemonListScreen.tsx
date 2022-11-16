@@ -44,20 +44,29 @@ const PokemonListScreen: React.FC<Props> = ({
       });
   };
 
-  const _renderItem = ({item}): JSX.Element => {
-    return <PokemonCell pokemon={item} onPress={showDetails} />;
+  const _renderItem = ({item, index}): JSX.Element => {
+    return (
+      <PokemonCell
+        key={index.toString()}
+        pokemon={item}
+        onPress={showDetails}
+      />
+    );
   };
 
   return (
     <SafeAreaView style={styles.backgroundStyle}>
       <StatusBar barStyle={PokemonColors.themes.statusBar} />
       <TitleText>PokeDex</TitleText>
-      <FlatList
-        style={styles.list}
-        data={listPokemon}
-        numColumns={2}
-        renderItem={_renderItem}
-      />
+      {listPokemon ? (
+        <FlatList
+          style={styles.list}
+          keyExtractor={(item, index) => index.toString()}
+          data={listPokemon}
+          numColumns={2}
+          renderItem={_renderItem}
+        />
+      ) : null}
     </SafeAreaView>
   );
 };

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
+import {SafeAreaView, ScrollView, StatusBar} from 'react-native';
 import {PokemonColors} from '../../../assets/colors/PokemonColors';
 import PokemonType from '../../../component/pokemontype/PokemonType';
 import {Pokemon} from '../../../model/Pokemon';
@@ -31,7 +31,7 @@ type Props = {
   navigation: any;
 };
 
-const PokemonDetailScreen: React.FC<Props> = ({
+const PokemonDetailView: React.FC<Props> = ({
   propsElement,
   navigation,
 }: Props) => {
@@ -83,7 +83,7 @@ const PokemonDetailScreen: React.FC<Props> = ({
           {pokemon.weaknesses.map((pokemonWeaknesses: string, index: any) => {
             return (
               <PokemonType
-                isBlackText
+                isDetail
                 isRow
                 index={index}
                 pokemonTypeName={pokemonWeaknesses}
@@ -97,16 +97,16 @@ const PokemonDetailScreen: React.FC<Props> = ({
     }
   };
 
-  const getImagePokemon = (indexPokemon: any) => {
-    var image;
+  const getPokemon = (indexPokemon: any) => {
+    var pokemon;
     if (indexPokemon) {
       for (let pokemonItem of listPokemon) {
         if (pokemonItem.num === indexPokemon) {
-          image = pokemonItem.img;
+          pokemon = pokemonItem;
         }
       }
     }
-    return image;
+    return pokemon;
   };
 
   const renderPokemonNextEvolution = () => {
@@ -117,18 +117,28 @@ const PokemonDetailScreen: React.FC<Props> = ({
           <ContainerPokemonNextEvolution>
             {pokemon.next_evolution.map(
               (pokemonNextEvolution: any, index: any) => {
-                const imagePokemon = getImagePokemon(pokemonNextEvolution.num);
+                const pokemonElememnt = getPokemon(pokemonNextEvolution.num);
                 return (
-                  <ContainerImagePokemonNextEvolution>
-                    {imagePokemon ? (
-                      <ImagePokemonNextEvolution source={{uri: imagePokemon}} />
+                  <ContainerImagePokemonNextEvolution
+                    onPress={() => {
+                      if (pokemonElememnt) {
+                        setPokemon(pokemonElememnt);
+                      }
+                    }}>
+                    {pokemonElememnt ? (
+                      <>
+                        <ImagePokemonNextEvolution
+                          source={{uri: pokemonElememnt.img}}
+                        />
+
+                        <PokemonType
+                          isDetail
+                          isRow
+                          index={index}
+                          pokemonTypeName={pokemonElememnt.name}
+                        />
+                      </>
                     ) : null}
-                    <PokemonType
-                      isBlackText
-                      isRow
-                      index={index}
-                      pokemonTypeName={pokemonNextEvolution.name}
-                    />
                   </ContainerImagePokemonNextEvolution>
                 );
               },
@@ -186,4 +196,4 @@ const PokemonDetailScreen: React.FC<Props> = ({
   );
 };
 
-export default PokemonDetailScreen;
+export default PokemonDetailView;

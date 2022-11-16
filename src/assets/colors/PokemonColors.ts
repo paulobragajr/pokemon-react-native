@@ -1,4 +1,4 @@
-import {useColorScheme} from 'react-native';
+import {Appearance} from 'react-native';
 import PokemonModelColors from './PokemonModelColors';
 
 const themeDark: PokemonModelColors = {
@@ -8,6 +8,9 @@ const themeDark: PokemonModelColors = {
   cellBackgroundColor: 'rgba(255, 255, 255, 0.15)',
   cellBackgroundColoSubContainer: '#1a1a1a',
   statusBar: 'light-content',
+  borderColorDetail: '#ffffff',
+  textDetailColor: '#ffffff',
+  cardInfoDetailBackgroundColor: 'rgba(255, 255, 255, 0.15)',
 } as PokemonModelColors;
 
 const themeLight: PokemonModelColors = {
@@ -17,6 +20,9 @@ const themeLight: PokemonModelColors = {
   cellBackgroundColor: 'rgba(0, 0, 0, 0.15)',
   cellBackgroundColoSubContainer: '#f2f2f2',
   statusBar: 'dark-content',
+  borderColorDetail: '#000000',
+  textDetailColor: '#000000',
+  cardInfoDetailBackgroundColor: '#fff',
 } as PokemonModelColors;
 
 const typePokemonColors = {
@@ -29,9 +35,9 @@ const typePokemonColors = {
 };
 
 class PokemonColors {
-  isDarkMode = useColorScheme() === 'dark';
+  static isDarkMode = Appearance.getColorScheme() === 'dark';
 
-  static themes: PokemonModelColors = this.isDarkMode
+  static themes: PokemonModelColors = PokemonColors.isDarkMode
     ? (themeDark as PokemonModelColors)
     : (themeLight as PokemonModelColors);
 
