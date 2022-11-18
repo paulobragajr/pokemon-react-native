@@ -1,5 +1,5 @@
 import React from 'react';
-import PokemonType from '../../../../component/pokemontype/PokemonType';
+import PokedexType from '../../../../component/pokedextype/PokedexType';
 
 import {
   BodyCell,
@@ -9,21 +9,29 @@ import {
   ButtonContainer,
 } from './PokemonCellStyle';
 
-const PokemonCell = (props: {pokemon: any; onPress?: any}) => {
-  const {pokemon, onPress} = props;
+const PokemonCell = (props: {index: any; pokemon: any; onPress?: any}) => {
+  const {index, pokemon, onPress} = props;
 
   const _detailPokemon = () => {
     onPress(pokemon);
   };
 
   return (
-    <ButtonContainer underlayColor={'transparent'} onPress={_detailPokemon}>
+    <ButtonContainer
+      key={'pokemonID_' + pokemon.id + '_indexID_' + index}
+      underlayColor={'transparent'}
+      onPress={_detailPokemon}>
       <BodyCell weaknesses={pokemon.type}>
         <PokemonName>{pokemon.name}</PokemonName>
         {pokemon.type.map((pokemonType: string, index: any) => {
-          return <PokemonType index={index} pokemonTypeName={pokemonType} />;
+          return (
+            <PokedexType
+              key={index.toString()}
+              index={index}
+              pokemonTypeName={pokemonType}
+            />
+          );
         })}
-
         <PokeDexImageCell />
         <PokemonImageCell source={{uri: pokemon.img}} />
       </BodyCell>

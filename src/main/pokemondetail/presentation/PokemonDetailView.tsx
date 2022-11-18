@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, StatusBar} from 'react-native';
 import {PokemonColors} from '../../../assets/colors/PokemonColors';
-import PokemonType from '../../../component/pokemontype/PokemonType';
+import PokedexType from '../../../component/pokedextype/PokedexType';
 import {Pokemon} from '../../../model/Pokemon';
 import {
   styles,
@@ -66,7 +66,12 @@ const PokemonDetailView: React.FC<Props> = ({
         <ContainerPokemonType>
           {pokemon.type.map((pokemonType: string, index: any) => {
             return (
-              <PokemonType isRow index={index} pokemonTypeName={pokemonType} />
+              <PokedexType
+                isRow
+                key={index.toString()}
+                index={index}
+                pokemonTypeName={pokemonType}
+              />
             );
           })}
         </ContainerPokemonType>
@@ -82,9 +87,10 @@ const PokemonDetailView: React.FC<Props> = ({
         <ContainerPokemonWeaknesses>
           {pokemon.weaknesses.map((pokemonWeaknesses: string, index: any) => {
             return (
-              <PokemonType
+              <PokedexType
                 isDetail
                 isRow
+                key={index.toString()}
                 index={index}
                 pokemonTypeName={pokemonWeaknesses}
               />
@@ -120,6 +126,7 @@ const PokemonDetailView: React.FC<Props> = ({
                 const pokemonElememnt = getPokemon(pokemonNextEvolution.num);
                 return (
                   <ContainerImagePokemonNextEvolution
+                    key={index.toString()}
                     onPress={() => {
                       if (pokemonElememnt) {
                         setPokemon(pokemonElememnt);
@@ -131,7 +138,7 @@ const PokemonDetailView: React.FC<Props> = ({
                           source={{uri: pokemonElememnt.img}}
                         />
 
-                        <PokemonType
+                        <PokedexType
                           isDetail
                           isRow
                           index={index}

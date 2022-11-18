@@ -1,7 +1,7 @@
 import React from 'react';
-import {PokemonTypeText, PokemonTypeBodyCell} from './PokemonTypeStyle';
+import {PokemonTypeText, PokemonTypeBodyCell} from './PokedexTypeStyle';
 
-const PokemonType = (props: {
+const PokedexType = (props: {
   index: any;
   pokemonTypeName?: string;
   isRow?: boolean;
@@ -10,10 +10,13 @@ const PokemonType = (props: {
   const {index, isRow, pokemonTypeName, isDetail} = props;
 
   return (
-    <PokemonTypeBodyCell isDetail={isDetail} isRow={isRow} key={index}>
+    <PokemonTypeBodyCell
+      key={index.toString()}
+      isDetail={isDetail}
+      isRow={isRow}>
       <PokemonTypeText isDetail={isDetail}>{pokemonTypeName}</PokemonTypeText>
     </PokemonTypeBodyCell>
   );
 };
 
-export default PokemonType;
+export default PokedexType;

@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
-import {SafeAreaView, StatusBar, FlatList} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 
 import {PokemonColors} from '../../../assets/colors/PokemonColors';
+import PokedexList from '../../../component/pokedexlist/PokedexList';
 import {Pokemon} from '../../../model/Pokemon';
 import {PokemonList} from '../model/PokemonList';
 import PokemonCell from './pokemoncell/PokemonCell';
@@ -42,28 +43,14 @@ const PokemonListView: React.FC<Props> = ({navigation, pokemonList}: Props) => {
   };
 
   const _renderItem = ({item, index}): JSX.Element => {
-    return (
-      <PokemonCell
-        key={index.toString()}
-        pokemon={item}
-        onPress={showDetails}
-      />
-    );
+    return <PokemonCell index={index} pokemon={item} onPress={showDetails} />;
   };
 
   return (
     <SafeAreaView style={styles.backgroundStyle}>
       <StatusBar barStyle={PokemonColors.themes.statusBar} />
       <TitleText>PokeDex</TitleText>
-      {listPokemon ? (
-        <FlatList
-          style={styles.list}
-          keyExtractor={(item, index) => index.toString()}
-          data={listPokemon}
-          numColumns={2}
-          renderItem={_renderItem}
-        />
-      ) : null}
+      <PokedexList numColumns={2} data={listPokemon} renderItem={_renderItem} />
     </SafeAreaView>
   );
 };
