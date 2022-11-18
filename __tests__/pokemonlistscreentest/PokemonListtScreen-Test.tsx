@@ -7,7 +7,7 @@ import React from 'react';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import PokemonListScreen from '../../src/main/pokemonlist/presentation/PokemonListScreen';
+import PokemonListScreen from '../../src/main/pokemonlist/presentation/PokemonListView';
 
 it('renders correctly', () => {
   renderer.create(<PokemonListScreen />);

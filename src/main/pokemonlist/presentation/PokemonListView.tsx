@@ -13,10 +13,7 @@ type Props = {
   navigation: any;
 };
 
-const PokemonListScreen: React.FC<Props> = ({
-  navigation,
-  pokemonList,
-}: Props) => {
+const PokemonListView: React.FC<Props> = ({navigation, pokemonList}: Props) => {
   const [listPokemon, setListPokemon] = useState<Array<Pokemon>>([]);
 
   useEffect(() => {
@@ -71,4 +68,4 @@ const PokemonListScreen: React.FC<Props> = ({
   );
 };
 
-export default PokemonListScreen;
+export default PokemonListView;

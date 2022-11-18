@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {MakePokemonDetailScreen, MakePokemonListScreen} from './Pages';
+import {PokemonDetailScreen, PokemonListScreen} from './InjectionPage';
 
 const Stack = createStackNavigator();
 
@@ -13,12 +13,12 @@ const Routes = () => {
         <Stack.Screen
           options={{headerShown: false}}
           name="PokemonListScreen"
-          component={MakePokemonListScreen}
+          component={PokemonListScreen}
         />
 
         <Stack.Screen
           name="PokemonDetailScreen"
-          component={MakePokemonDetailScreen}
+          component={PokemonDetailScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
