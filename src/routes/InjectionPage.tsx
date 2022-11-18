@@ -3,11 +3,11 @@ import PokemonDetailView from '../main/pokemondetail/presentation/PokemonDetailV
 import PokemonListView from '../main/pokemonlist/presentation/PokemonListView';
 import {makeRemotePokemon} from '../main/pokemonlist/service/RemotePokemonList';
 
-const PokemonListScreen: React.FC = ({navigation}): JSX.Element => {
+const PokemonListScreen: React.FC = (props: any): JSX.Element => {
   return (
     <PokemonListView
       pokemonList={makeRemotePokemon()}
-      navigation={navigation}
+      navigation={props.navigation}
     />
   );
 };

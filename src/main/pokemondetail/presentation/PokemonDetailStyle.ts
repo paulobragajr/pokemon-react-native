@@ -145,15 +145,7 @@ const ContainerPokemonWeaknesses = styled.View`
   width: 40%;
 `;
 
-const styles = StyleSheet.create({
-  backgroundStyle: {
-    backgroundColor: PokemonColors.themes.backgroundColor,
-    flex: 1,
-  },
-});
-
 export {
-  styles,
   DetailPokemonBody,
   DetailPokemonImage,
   PokeDexImage,

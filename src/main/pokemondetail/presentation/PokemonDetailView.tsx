@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView, StatusBar} from 'react-native';
+import {ScrollView} from 'react-native';
 import {PokemonColors} from '../../../assets/colors/PokemonColors';
+import {PokedexContainer} from '../../../component';
 import PokedexType from '../../../component/pokedextype/PokedexType';
 import {Pokemon} from '../../../model/Pokemon';
 import {
-  styles,
   DetailPokemonBody,
   DetailPokemonImage,
   DetailPokemonName,
@@ -159,8 +159,7 @@ const PokemonDetailView: React.FC<Props> = ({
   };
 
   return (
-    <SafeAreaView style={styles.backgroundStyle}>
-      <StatusBar barStyle={PokemonColors.themes.statusBar} />
+    <PokedexContainer>
       <DetailPokemonBody type={pokemon.type}>
         <TopContainer>
           <RowContainer>
@@ -199,7 +198,7 @@ const PokemonDetailView: React.FC<Props> = ({
           </ScrollView>
         </BottomContainer>
       </DetailPokemonBody>
-    </SafeAreaView>
+    </PokedexContainer>
   );
 };
 

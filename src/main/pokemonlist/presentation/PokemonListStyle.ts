@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {StyleSheet} from 'react-native';
 import {PokemonColors} from '../../../assets/colors/PokemonColors';
 
 const TitleText = styled.Text`
@@ -11,12 +10,4 @@ const TitleText = styled.Text`
   color: ${PokemonColors.themes.textTitle};
 `;
 
-const styles = StyleSheet.create({
-  backgroundStyle: {
-    backgroundColor: PokemonColors.themes.backgroundColor,
-    flex: 1,
-  },
-  list: {flex: 1},
-});
-
-export {TitleText, styles};
+export {TitleText};

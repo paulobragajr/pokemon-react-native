@@ -15,7 +15,7 @@ export class RemotePokemonList implements PokemonList {
     });
     switch (httpResponse.statusCode) {
       case HttpStatusCode.ok:
-        return httpResponse.body;
+        return httpResponse.body as PokemonList.Model;
       case HttpStatusCode.unauthorized:
         throw new UnexpectedError();
       default:

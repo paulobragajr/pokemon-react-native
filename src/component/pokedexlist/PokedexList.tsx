@@ -4,7 +4,7 @@ import {
   PokedexListBody,
   PokedexEmptyListBody,
   PokedexEmptyText,
-  styles,
+  pokedexListStyle,
   PokedexEmptyImage,
 } from './PokedexListStyle';
 
@@ -19,11 +19,11 @@ const PokedexList = (props: {
     if (data && data.length > 0) {
       return (
         <FlatList
-          style={styles.list}
+          style={pokedexListStyle.list}
           numColumns={numColumns}
           data={data}
           renderItem={renderItem}
-          keyExtractor={(item, index) => item.id.toString()}
+          keyExtractor={item => item.id.toString()}
         />
       );
     } else {

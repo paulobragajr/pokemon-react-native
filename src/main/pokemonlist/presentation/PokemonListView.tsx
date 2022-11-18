@@ -1,13 +1,9 @@
 import React, {useState, useEffect} from 'react';
-
-import {SafeAreaView, StatusBar} from 'react-native';
-
-import {PokemonColors} from '../../../assets/colors/PokemonColors';
-import PokedexList from '../../../component/pokedexlist/PokedexList';
+import {PokedexContainer, PokedexList} from '../../../component';
 import {Pokemon} from '../../../model/Pokemon';
 import {PokemonList} from '../model/PokemonList';
 import PokemonCell from './pokemoncell/PokemonCell';
-import {TitleText, styles} from './PokemonListStyle';
+import {TitleText} from './PokemonListStyle';
 
 type Props = {
   pokemonList: PokemonList;
@@ -16,6 +12,7 @@ type Props = {
 
 const PokemonListView: React.FC<Props> = ({navigation, pokemonList}: Props) => {
   const [listPokemon, setListPokemon] = useState<Array<Pokemon>>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     getPokemonList();
@@ -28,30 +25,28 @@ const PokemonListView: React.FC<Props> = ({navigation, pokemonList}: Props) => {
     });
   };
 
-  /**
-   * Request Service
-   */
   const getPokemonList = async () => {
     pokemonList
       .getPokemonAll()
       .then((response: any) => {
         setListPokemon(response.pokemon);
+        setLoading(false);
       })
-      .catch(error => {
-        console.warn(error);
+      .catch(() => {
+        setLoading(false);
       });
   };
 
-  const _renderItem = ({item, index}): JSX.Element => {
+  const _renderItem = (itemCell: any): JSX.Element => {
+    const {index, item} = itemCell;
     return <PokemonCell index={index} pokemon={item} onPress={showDetails} />;
   };
 
   return (
-    <SafeAreaView style={styles.backgroundStyle}>
-      <StatusBar barStyle={PokemonColors.themes.statusBar} />
+    <PokedexContainer loading={loading}>
       <TitleText>PokeDex</TitleText>
       <PokedexList numColumns={2} data={listPokemon} renderItem={_renderItem} />
-    </SafeAreaView>
+    </PokedexContainer>
   );
 };
 

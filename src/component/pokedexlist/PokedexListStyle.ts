@@ -30,7 +30,7 @@ const PokedexEmptyImage = styled.Image.attrs((props: {Img: any}) => ({
   align-items: center;
   justify-content: center;
 `;
-const styles = StyleSheet.create({
+const pokedexListStyle = StyleSheet.create({
   list: {flex: 1},
 });
 
@@ -39,5 +39,5 @@ export {
   PokedexEmptyListBody,
   PokedexEmptyText,
   PokedexEmptyImage,
-  styles,
+  pokedexListStyle,
 };
