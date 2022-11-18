@@ -11,6 +11,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@react-native-firebase/analytics": "^16.4.6",
+    "@react-native-firebase/app": "^16.4.5",
     "@react-native-masked-view/masked-view": "^0.2.7",
     "@react-navigation/native": "^6.0.12",
     "@react-navigation/stack": "^6.2.3",
