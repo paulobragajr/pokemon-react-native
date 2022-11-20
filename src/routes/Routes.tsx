@@ -14,25 +14,29 @@ const Stack = createStackNavigator();
 const Routes = () => {
   const [routeName, setRouteName] = useState<string | undefined>('');
   const navigationRef = useRef<NavigationContainerRef>(null);
+
+  const onRoutesStateChange = () => {
+    const previousRouteName = routeName;
+    const currentRouteName = navigationRef.current?.getCurrentRoute()?.name;
+
+    if (previousRouteName !== currentRouteName) {
+      analytics().logScreenView({
+        screen_name: currentRouteName,
+        screen_class: currentRouteName,
+      });
+    }
+    setRouteName(currentRouteName);
+  };
+
+  const onRoutesReady = () => {
+    setRouteName(navigationRef.current?.getCurrentRoute()?.name);
+  };
+
   return (
     <NavigationContainer
       ref={navigationRef}
-      onReady={() =>
-        setRouteName(navigationRef.current?.getCurrentRoute()?.name)
-      }
-      onStateChange={() => {
-        const previousRouteName = routeName;
-        const currentRouteName = navigationRef.current?.getCurrentRoute()?.name;
-
-        if (previousRouteName !== currentRouteName) {
-          analytics().logScreenView({
-            screen_name: currentRouteName,
-            screen_class: currentRouteName,
-          });
-        }
-
-        setRouteName(currentRouteName);
-      }}>
+      onReady={onRoutesReady}
+      onStateChange={onRoutesStateChange}>
       <Stack.Navigator>
         <Stack.Screen
           options={{headerShown: false}}
