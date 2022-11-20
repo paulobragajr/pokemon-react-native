@@ -1,4 +1,7 @@
 import React, {useState, useEffect} from 'react';
+
+import analytics from '@react-native-firebase/analytics';
+
 import {PokedexContainer, PokedexList} from '../../../component';
 import {Pokemon} from '../../../model/Pokemon';
 import {PokemonList} from '../model/PokemonList';
@@ -19,6 +22,7 @@ const PokemonListView: React.FC<Props> = ({navigation, pokemonList}: Props) => {
   }, []);
 
   const showDetails = (pokemon: Pokemon) => {
+    analytics().logEvent('changeRoute', {actionName: 'PokemonDetailScreen'});
     navigation.navigate('PokemonDetailScreen', {
       pokemon: pokemon,
       pokemonList: listPokemon,
