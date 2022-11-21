@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
-import {StyleSheet} from 'react-native';
-import {PokemonColors} from '../../../assets/colors/PokemonColors';
+import PokemonColors from '../../../assets/colors/PokemonColors';
 import PokedexImageSrc from '../../../assets/image/pokeball.png';
 
 const DetailPokemonBody = styled.View.attrs((props: {type: string}) => ({

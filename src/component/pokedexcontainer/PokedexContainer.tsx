@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
-import {PokemonColors} from '../../assets/colors/PokemonColors';
+import PokemonColors from '../../assets/colors/PokemonColors';
 import PokedexLoading from '../pokedexloading/PokedexLoading';
 import {pokedexContainerStyle} from './PokedexContainerStyle';
 

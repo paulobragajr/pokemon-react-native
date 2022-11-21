@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
-import {PokemonColors} from '../../../assets/colors/PokemonColors';
+import PokemonColors from '../../../assets/colors/PokemonColors';
 import {PokedexContainer} from '../../../component';
 import PokedexType from '../../../component/pokedextype/PokedexType';
 import {Pokemon} from '../../../model/Pokemon';

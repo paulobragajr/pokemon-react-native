@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {PokemonColors} from '../../../../assets/colors/PokemonColors';
+import PokemonColors from '../../../../assets/colors/PokemonColors';
 import PokedexImage from '../../../../assets/image/pokeball.png';
 
 const BodyCell = styled.View.attrs((props: {weaknesses: string}) => ({

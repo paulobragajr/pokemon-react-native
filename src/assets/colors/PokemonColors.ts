@@ -34,7 +34,7 @@ const typePokemonColors = {
   default: '#b1726c',
 };
 
-class PokemonColors {
+export default class PokemonColors {
   static isDarkMode = Appearance.getColorScheme() === 'dark';
 
   static themes: PokemonModelColors = PokemonColors.isDarkMode
@@ -62,4 +62,3 @@ class PokemonColors {
     return backGroundcolor;
   };
 }
-export {PokemonColors};

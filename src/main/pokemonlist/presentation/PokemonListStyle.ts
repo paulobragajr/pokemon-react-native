@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {PokemonColors} from '../../../assets/colors/PokemonColors';
+import PokemonColors from '../../../assets/colors/PokemonColors';
 
 const TitleText = styled.Text`
   margin-start: 16px;
