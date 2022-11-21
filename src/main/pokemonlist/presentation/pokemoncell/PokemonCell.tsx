@@ -1,4 +1,5 @@
 import React from 'react';
+import PokedexTouchableHighlight from '../../../../component/pokedextouchablehighlight/PokedexTouchableHighlight';
 import PokedexType from '../../../../component/pokedextype/PokedexType';
 
 import {
@@ -6,20 +7,24 @@ import {
   PokeDexImageCell,
   PokemonImageCell,
   PokemonName,
-  ButtonContainer,
 } from './PokemonCellStyle';
 
-const PokemonCell = (props: {index: any; pokemon: any; onPress?: any}) => {
-  const {index, pokemon, onPress} = props;
+const PokemonCell = (props: {
+  index: any;
+  pokemon: any;
+  onPress?: any;
+  paramsFireBase?: {[key: string]: any};
+}) => {
+  const {index, pokemon, onPress, paramsFireBase} = props;
 
   const _detailPokemon = () => {
     onPress(pokemon);
   };
 
   return (
-    <ButtonContainer
+    <PokedexTouchableHighlight
       key={'pokemonID_' + pokemon.id + '_indexID_' + index}
-      underlayColor={'transparent'}
+      paramsFireBase={paramsFireBase}
       onPress={_detailPokemon}>
       <BodyCell weaknesses={pokemon.type}>
         <PokemonName>{pokemon.name}</PokemonName>
@@ -35,7 +40,7 @@ const PokemonCell = (props: {index: any; pokemon: any; onPress?: any}) => {
         <PokeDexImageCell />
         <PokemonImageCell source={{uri: pokemon.img}} />
       </BodyCell>
-    </ButtonContainer>
+    </PokedexTouchableHighlight>
   );
 };
 

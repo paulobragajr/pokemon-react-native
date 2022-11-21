@@ -27,25 +27,22 @@ import {
 } from './PokemonDetailStyle';
 
 type Props = {
-  propsElement: any;
   navigation: any;
+  route: any;
 };
 
-const PokemonDetailView: React.FC<Props> = ({
-  propsElement,
-  navigation,
-}: Props) => {
+const PokemonDetailView: React.FC<Props> = ({navigation, route}: Props) => {
   const [pokemon, setPokemon] = useState<Pokemon>({});
   const [listPokemon, setListPokemon] = useState<Array<Pokemon>>([]);
 
   useEffect(() => {
-    setPokemon(propsElement.route.params.pokemon);
-    setListPokemon(propsElement.route.params.pokemonList);
+    setPokemon(route.params.pokemon);
+    setListPokemon(route.params.pokemonList);
     navigation.setOptions({
       title: '',
       headerStyle: {
         backgroundColor: PokemonColors.getTypePokemonColor(
-          propsElement.route.params.pokemon.type,
+          route.params.pokemon.type,
         ),
       },
 
@@ -54,11 +51,7 @@ const PokemonDetailView: React.FC<Props> = ({
         fontWeight: 'bold',
       },
     });
-  }, [
-    navigation,
-    propsElement.route.params.pokemon,
-    propsElement.route.params.pokemonList,
-  ]);
+  }, [navigation, route.params.pokemon, route.params.pokemonList]);
 
   const renderPokemonType = () => {
     if (pokemon.type) {

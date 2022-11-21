@@ -14,7 +14,7 @@ const PokemonListScreen: React.FC = (props: any): JSX.Element => {
 
 const PokemonDetailScreen: React.FC = (props: any): JSX.Element => {
   return (
-    <PokemonDetailView navigation={props.navigation} propsElement={props} />
+    <PokemonDetailView navigation={props.navigation} route={props.route} />
   );
 };
 

@@ -12,14 +12,6 @@ const BodyCell = styled.View.attrs((props: {weaknesses: string}) => ({
   border-color: #fff;
 `;
 
-const ButtonContainer = styled.TouchableHighlight`
-  flex: 1;
-  margin-right: 10px;
-  margin-start: 10px;
-  margin-top: 10px;
-  height: 100px;
-`;
-
 const PokemonName = styled.Text`
   font-size: 15px;
   color: #ffffff;
@@ -66,7 +58,6 @@ const PokemonTypeBodyCell = styled.View`
 `;
 
 export {
-  ButtonContainer,
   PokemonName,
   PokeDexImageCell,
   PokemonImageCell,
