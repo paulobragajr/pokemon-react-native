@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+import codePush from 'react-native-code-push';
 import {useRef, useState} from 'react';
 import analytics from '@react-native-firebase/analytics';
 import {
@@ -53,4 +54,6 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default codePush({
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+})(Routes);
