@@ -1,7 +1,8 @@
 apply plugin: "com.android.application"
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services' 
-
+apply plugin: 'com.google.gms.google-services'
+//apply from: "../../node_modules/react-native/react.gradle"
+//apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -224,10 +225,23 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            resValue "string", "CodePushDeploymentKey", ''
+        }
+        releaseStaging {
+
+            resValue "string", "CodePushDeploymentKey", 'fz_8AqRTCoPgNmn9ExPM52rv5I4_Cif_XNG-f'
+            matchingFallbacks = ['release']
+
+            signingConfig signingConfigs.debug
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
+            resValue "string", "CodePushDeploymentKey", 'FP7u2pmbHWRe8u0KRdQvf-0mQD21rQ9vMcnfH'
+
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
